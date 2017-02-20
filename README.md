@@ -46,7 +46,7 @@ print(calc(2, [lambda people: people[0].said(people[0].isKnave() or people[1].is
 
 This will output
 
-```
+```python
 ['10']
 ```
 
