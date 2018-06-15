@@ -22,7 +22,14 @@ First, you need to describe the problem. We need to use the `.said()` method to 
 The first argument is the amount of people we want. In this case, we only want one person, A.
 
 ```python
-print(calc(1, [lambda people: people[0].said(people[0].isKnave())]))
+print(calc(1, # Number of people 
+  [
+    lambda people: 
+      people[0].said( # A said that
+        people[0].isKnave() # A is a knave
+      )
+  ]
+))
 ```
 
 And that will output
@@ -41,7 +48,14 @@ Let's call the speaker A, and the brother B. We will want to use `.said()` to qu
 We need two people. Let's write code! :D
 
 ```python
-print(calc(2, [lambda people: people[0].said(people[0].isKnave() or people[1].isKnave())]))
+print(calc(2, # Number of people
+  [
+    lambda people: people[0].said( # A said
+      people[0].isKnave() or # Either A is a knave, or 
+      people[1].isKnave()    # B is a knave
+    )
+  ]
+))
 ```
 
 This will output
