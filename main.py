@@ -1,14 +1,14 @@
 class Person():
-    def __init__(self, knaveOrKnight):
-        self.am = int(knaveOrKnight)
+    def __init__(self, tellsTheTruth):
+        self.am = int(tellsTheTruth)
     
     def said(self, condition):
         return condition if self.am else not condition
 
-    def isKnave(self):
+    def isLiar(self):
         return not self.am
 
-    def isKnight(self):
+    def isTruthTeller(self):
         return self.am
 
     def __eq__(self, person):
