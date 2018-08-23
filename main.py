@@ -17,15 +17,16 @@ class Person():
     def __ne__(self, person):
         return self.am != person.am
 
-def calc(num, keys):
-    out = []
+def list_all_solutions(num, keys):
+    solutions = []
     for i in map(lambda x: (num + 2 - len(bin(x))) * "0" + bin(x)[2:], range(2**num)):
-        yey = True
+        all_conditions_satisfied_thus_far = True
         for j in keys:
             if not j(map(Person, i)):
-               yey = False
+               all_conditions_satisfied_thus_far = False
                break
-        if yey: out.append(i)
-    return out
+        if all_conditions_satisfied_thus_far: solutions.append(i)
+    return solutions
     
 # Your code below! You should describe the problem and it will (hopefully) solve it
+
