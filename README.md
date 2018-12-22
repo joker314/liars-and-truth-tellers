@@ -22,7 +22,7 @@ First, you need to describe the problem. We need to use the `.said()` method to 
 The first argument is the amount of people we want. In this case, we only want one person, A.
 
 ```python
-print(calc(1, # Number of people 
+print(list_all_solutions(1, # Number of people 
   [
     lambda people: 
       people[0].said( # A said that
@@ -48,7 +48,7 @@ Let's call the speaker A, and the brother B. We will want to use `.said()` to qu
 We need two people. Let's write code! :D
 
 ```python
-print(calc(2, # Number of people
+print(list_all_solutions(2, # Number of people
   [
     lambda people: people[0].said( # A said
       people[0].isLiar() or # Either A is a liar, or 
