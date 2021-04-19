@@ -1,37 +1,38 @@
-class Person():
-    def __init__(self, tellsTheTruth):
-        self.am = int(tellsTheTruth)
-    
-    def said(self, condition):
-        return condition if self.am else not condition
+class Person:
+    def __init__(self, is_truthful):
+        self.truthful = int(is_truthful)
 
-    def isLiar(self):
-        return not self.am
+    def said(self, claim):
+        return claim if self.truthful else not claim
 
-    def isTruthTeller(self):
-        return self.am
+    def is_liar(self):
+        return not self.truthful
+
+    def is_truth_teller(self):
+        return self.truthful
 
     def __eq__(self, person):
-        return self.am == person.am
+        return self.truthful == person.truthful
 
     def __ne__(self, person):
-        return self.am != person.am
+        return self.truthful != person.truthful
 
-def list_all_solutions(num_of_people, check_condition):
+
+def list_solutions(num_of_people, check_function):
     solutions = []
-    for decimal_combination in range(2 ** num_of_people): # Number of different combinations
-        binary = bin(decimal_combination)[2:] # Strip the first 2 chars as these are '0b'
 
-        padded_binary = (num_of_people - len(binary)) * "0" # Pad with zeros
-        padded_binary += binary # Actually add the binary
+    # There are 2^n possible outcomes.
+    for state in range(2 ** num_of_people):
 
-        """
-        We've now converted a combination into binary, e.g. 101
-        We need to convert it to [Person("1"), Person("0"), Person("1")]
-        Which will become a list of a T-teller, Liar, and T-teller, in that order
-        """
-        if check_condition([Person(c) for c in padded_binary]):
-            solutions.append(padded_binary)
+        # Remove "0b" and pad to length "num_of_people".
+        binary_repr = bin(state)[2:].zfill(num_of_people)
+
+        # Create the world of people possible with this configuration.
+        possible_world = [Person(c) for c in binary_repr]
+
+        if check_function(possible_world):
+            solutions.append(binary_repr)
+
     return solutions
-    
-# Your code below! You should describe the problem and it will (hopefully) solve it
+
+# Your code goes below! Describe the problem and it should solve it.
